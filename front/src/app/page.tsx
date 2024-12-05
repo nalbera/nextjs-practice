@@ -1,37 +1,135 @@
 import Image from "next/image";
-import imgLanding from "../../public/img-landing.png";
+import imgPortada from "../../public/img_portada.jpg";
+import Link from "next/link";
+import smartPhone from "../../public/smartphone.jpg";
+import laptop from "../../public/laptop.jpg";
+import tablet from "../../public/tablet.jpg";
 
 export default function Landing() {
   return (
-    <div className="py-28">
-    <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-        <div className="hidden lg:block lg:w-1/2 bg-cover bg-black">
-            <Image className="mt-12 opacity-35" src={imgLanding} alt="imagen" />
+    <>
+      <section className="bg-sky-900 py-20">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h1 className="text-white font-sans font-bold text-5xl leading-tight mb-6">
+                Electronic E-Shop
+              </h1>
+              <p className="text-white text-xl mb-8">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
+                sapiente. Nulla sunt blanditiis sapiente? Expedita distinctio
+                consequuntur alias, maiores ut unde, cumque, ipsam deserunt ipsa
+                perferendis ratione. Sint, necessitatibus dolor.
+              </p>
+              <Link
+                href="/home"
+                className="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-700 transition duration-200"
+              >
+                Entrar al Shop
+              </Link>
+            </div>
+            <div className="md:w-1/2">
+              <Image
+                className="w-full rounded-lg shadow-lg"
+                src={imgPortada}
+                alt="imagen"
+              />
+            </div>
+          </div>
         </div>
-        <div className="w-full p-2 lg:w-1/2 bg-slate-600">
-            <div className="mt-0">
-                <h2 className=" text-slate-300">Bienvenido</h2>
-            </div>
-            <div className="mt-4">
-                <label className="block  text-slate-300 text-sm font-bold mb-2">Email</label>
-                <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" />
-            </div>
-            <div className="mt-4">
-                <div className="flex justify-between">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+      </section>
+      <section className="p-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">
+            Categorías principales
+          </h2>
+
+          {/* smartphones */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image
+                className="w-full h-64 object-cover"
+                src={smartPhone}
+                alt="smart-phone"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  Smatrphones
+                </h3>
+                <p className="text-gray-700 text-base">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quisquam, aut consequuntur porro sed amet mollitia cum numquam
+                  soluta officiis.
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">
+                    Desde $999.99
+                  </span>
+                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
+                    Ver mas...
+                  </button>
                 </div>
-                <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" />
+              </div>
             </div>
-            <div className="mt-8">
-                <button className="bg-gray-700 text-slate-300 font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
+            {/* -------------------------------------------------------------------- */}
+
+            {/* laptops */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image
+                className="w-full h-64 object-cover"
+                src={laptop}
+                alt="laptop"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  Laptops
+                </h3>
+                <p className="text-gray-700 text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Provident nisi laborum omnis ipsam possimus tempora, suscipit,
+                  vel minima fugiat.
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">
+                    Desde $888.88
+                  </span>
+                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
+                    Ver mas...
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="mt-4 flex items-center justify-between">
-                <span className="border-b w-1/5 md:w-1/4"></span>
-                <a href="#" className="text-xs text-slate-300 uppercase">o registrarse</a>
-                <span className="border-b w-1/5 md:w-1/4"></span>
+            {/* -------------------------------------------------------------------- */}
+
+            {/* tablet */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image
+                className="w-full h-64 object-cover"
+                src={tablet}
+                alt="tablet"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  Tablets
+                </h3>
+                <p className="text-gray-700 text-base">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Optio beatae placeat earum nostrum ab, saepe accusantium.
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">
+                    Desde $888.88
+                  </span>
+                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
+                    Ver mas...
+                  </button>
+                </div>
+              </div>
             </div>
+            {/* ------------------------------------------ */}
+          </div>
         </div>
-    </div>
-    </div>
+      </section>
+    </>
   );
 }

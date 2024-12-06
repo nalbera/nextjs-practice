@@ -3,19 +3,6 @@ import { CardProps } from "./type";
 
 export const Card: React.FC<CardProps> = ({ image, name, price, description }) => { 
     return (
-        // <div>
-        //     <div>
-        //         <img src={image} alt="image poroduct" />
-        //     </div>
-        //     <div>
-        //         <h3>{name}</h3>
-        //         <h4>{price}</h4>
-        //     </div>
-        //     <div>
-        //         <p>{description}</p>
-        //     </div>
-        //     <button>????</button>
-        // </div>
         <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="relative overflow-hidden">
                 <img className="object-cover w-full h-full" src={image} alt="Product" />

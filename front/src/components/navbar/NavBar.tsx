@@ -43,34 +43,34 @@ const NavBar: React.FC = () => {
       </div>
       <div className="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
         <Link
-          href="#"
+          href="/"
           className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
         >
           Home
         </Link>
         <Link
-          href="#"
+          href="/home"
           className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
         >
           Productos
         </Link>
         <Link
-          href="#"
+          href="/cart"
           className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
         >
           Carrito
         </Link>
         <Link
-           href="#"
+           href="/login"
            className="toggle hidden md:flex w-full md:w-auto px-3 py-3 text-right  hover:text-teal-500 text-teal-900"
         >
-        Login
+          Login
         </Link>
         <Link
-           href="#"
+           href="/register"
            className="toggle hidden md:flex w-full md:w-auto px-3 py-3 text-right  hover:text-teal-500 text-teal-900"
         >
-        Register
+          Register
         </Link>
       </div>
       

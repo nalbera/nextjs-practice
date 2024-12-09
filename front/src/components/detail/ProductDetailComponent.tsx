@@ -14,9 +14,6 @@ export const ProductDetailComponent: React.FC<DetailComponentProps> = ({id, name
               src={image}
             />
             <div className="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
-              {/* <h2 className="text-sm tracking-widest text-gray-500 title-font">
-                HENRY STORE
-              </h2> */}
               <h1 className="mb-1 text-3xl font-medium text-gray-900 title-font">
                 {name}
               </h1>

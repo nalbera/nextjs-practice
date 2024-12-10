@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from "nextjs-toast-notify";
 import "nextjs-toast-notify/dist/nextjs-toast-notify.css";
+import { signInService } from '@/services/signinService';
 
 const Login =  () => {
 
@@ -19,32 +20,16 @@ const Login =  () => {
         e.preventDefault();
         
         try {
-                    
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
-                });
-                
-                const json = await response.json();
-                
-                if(!response.ok) {
-                    throw new Error(json.message);
-                }
+            const json = await signInService(email, password);
 
-                toast.success(`Bienvenido ${json.user.name}`, {
-                    duration: 3000,
-                    progress: true,
-                    position: "top-center",
-                    transition: "bounceIn",
-                    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>',
-                    sonido: false,
-                  });            
+            toast.success(`Bienvenido ${json.user.name}`, {
+                duration: 3000,
+                progress: true,
+                position: "top-center",
+                transition: "bounceIn",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>',
+                sonido: false,
+            });            
                 router.push('/');
         } catch (error) {
             toast.error(`${ error }`, {

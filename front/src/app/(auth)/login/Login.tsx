@@ -32,7 +32,7 @@ const Login = () => {
                         <div>
                             <label className='block text-sm font-medium text-gray-200'>Email</label>
                             <div className='mt-1'>
-                                <input type="email" name="" id="" required 
+                                <input type="email"  required 
                                     className='px-2 py-3 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-200 
                                     focus:outline-none focus:ring-sky-300 sm:text-sm'
                                     onChange={(e) => setEmail(e.target.value)}
@@ -43,7 +43,7 @@ const Login = () => {
                         <div>
                             <label className='block text-sm font-medium text-gray-200'>Password</label>
                             <div className='mt-1'>
-                                <input type="password" name="" id="" required 
+                                <input type="password"  required 
                                     className='px-2 py-3 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-200 
                                     focus:outline-none focus:ring-sky-300 sm:text-sm'
                                     onChange={(e) => setPassword(e.target.value)}

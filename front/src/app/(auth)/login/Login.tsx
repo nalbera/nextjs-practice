@@ -4,19 +4,58 @@ import Image from 'next/image';
 import genericUser from '../../../../public/generic_user.png';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from "nextjs-toast-notify";
+import "nextjs-toast-notify/dist/nextjs-toast-notify.css";
 
-const Login = () => {
+const Login =  () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
-    const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e: React.FormEvent<HTMLFormElement>) => {
+    const router = useRouter();
+
+    const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log({
-            user: email,
-            password: password
-        });
         
+        try {
+                    
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+                
+                const json = await response.json();
+                
+                if(!response.ok) {
+                    throw new Error(json.message);
+                }
+
+                toast.success(`Bienvenido ${json.user.name}`, {
+                    duration: 3000,
+                    progress: true,
+                    position: "top-center",
+                    transition: "bounceIn",
+                    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>',
+                    sonido: false,
+                  });            
+                router.push('/');
+        } catch (error) {
+            toast.error(`${ error }`, {
+                duration: 5000,
+                progress: true,
+                position: "top-center",
+                transition: "bounceIn",
+                icon: '',
+                sonido: false,
+              });
+        }
     }
     return (
         <div className="flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">

@@ -2,7 +2,7 @@ import { AppProps } from "next/dist/shared/lib/router/router";
 import { ProductDetailComponent } from "@/components/detail/ProductDetailComponent";
 
 const getProductById = async (id: number) => {
-    const response = await fetch(`${process.env.API_URL}/products/${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`);
     const json = await response.json();
     return json;
 }

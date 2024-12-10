@@ -56,6 +56,7 @@ const Register: React.FC = () => {
               setTimeout(() => {
                   router.push("/login");
               }, 2000);
+              
         } catch (error) {
             toast.error("Ooopsss! Algo salió mal...", {
                 duration: 5000,

@@ -3,11 +3,13 @@
 import Image from 'next/image';
 import genericUser from '../../../../public/generic_user.png';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from "nextjs-toast-notify";
 import "nextjs-toast-notify/dist/nextjs-toast-notify.css";
 import { signInService } from '@/services/signinService';
+import { UserProfile } from '@/types/userProfile';
+import { AuthContext } from '@/context/AuthContextProvider';
 
 const Login =  () => {
 
@@ -15,13 +17,25 @@ const Login =  () => {
     const [password, setPassword] = useState("");
     
     const router = useRouter();
+    const { setUserLogin } = useContext(AuthContext);
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         try {
             const json = await signInService(email, password);
-
+            
+            const user: UserProfile = {
+                userName: json.user.name,
+                email: json.user.email,
+                address: json.user.address,
+                phone: json.user.phone
+            }
+            
+            const token: string = json.token;
+            
+            setUserLogin(user,token);
+            
             toast.success(`Bienvenido ${json.user.name}`, {
                 duration: 3000,
                 progress: true,
@@ -30,7 +44,7 @@ const Login =  () => {
                 icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>',
                 sonido: false,
             });            
-                router.push('/');
+            router.push('/');
         } catch (error) {
             toast.error(`${ error }`, {
                 duration: 5000,

@@ -10,4 +10,5 @@ export type UserContextType = {
     token: string | null;
     setUserLogin: (user: UserProfile, token: string) => void;
     logout: () => void;
+    updateDataUserLogged: (user: UserProfile) => void;
 }

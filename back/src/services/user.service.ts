@@ -9,6 +9,7 @@ import {
 } from "./credential.service";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config/envs";
+import updateUserDto from "../dtos/updateUser.dto";
 
 export const checkUserExists = async (email: string): Promise<boolean> => {
   const user = await UserRepository.findOneBy({ email });
@@ -51,3 +52,15 @@ export const loginUserService = async (
     throw new ClientError("Invalid password");
   }
 };
+
+export const updateUserService = async (updateUserDto: updateUserDto) => {
+  return await UserRepository.update(
+    {id: updateUserDto.id},
+    {
+      name: updateUserDto.name,
+      address: updateUserDto.address,
+      email: updateUserDto.email,
+      phone: updateUserDto.phone
+    }
+  )
+}

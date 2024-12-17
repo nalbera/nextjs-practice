@@ -3,6 +3,8 @@ import { catchedController } from "../utils/catchedController";
 import {
   loginUserService,
   registerUserService,
+  updateUserService,
+ 
 } from "../services/user.service";
 
 export const registerUser = catchedController(
@@ -28,3 +30,12 @@ export const login = catchedController(async (req: Request, res: Response) => {
     token: user.token,
   });
 });
+
+export const userUpdate = catchedController(async (req: Request, res: Response) => {
+  const id = req.body.userId;
+  const { email, name, address, phone } = req.body;
+  const userUpdated = await updateUserService({id, email, name, address, phone});
+  res.status(200).send(userUpdated);
+})
+
+

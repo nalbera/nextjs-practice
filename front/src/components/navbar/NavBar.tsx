@@ -88,13 +88,13 @@ const NavBar: React.FC = () => {
                   href="/login"
                   className="toggle hidden md:flex w-full md:w-auto px-3 py-3 text-right  hover:text-teal-500 text-teal-900"
                 >
-                  Login
+                  Ingresar
                 </Link>
                 <Link
                   href="/register"
                   className="toggle hidden md:flex w-full md:w-auto px-3 py-3 text-right  hover:text-teal-500 text-teal-900"
                 >
-                  Register
+                  Registro
                 </Link>
               </>
             )

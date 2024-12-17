@@ -1,6 +1,8 @@
+import Profile from "./profile/Profile";
+
 const Dashboard: React.FC = () => {
     return (
-        <h1>Dashboard</h1>
+        <Profile />
     )
 }
 

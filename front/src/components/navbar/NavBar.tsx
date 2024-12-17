@@ -7,10 +7,12 @@ import logo from "../../../public/logo2.jpg";
 import hamburger from "../../../public/hamburger.png";
 import close from "../../../public/close.png";
 import { AuthContext } from "@/context/AuthContextProvider";
+import cart from '../../../public/cart.svg';
+import userProfile from '../../../public/user-profile.svg';
+import goOut from '../../../public/go-out.svg';
 
 const NavBar: React.FC = () => {
-
-    
+ 
     const toggleMenu = () => {
         const navToggle = document.getElementsByClassName("toggle");
         for (let i = 0; i < navToggle.length; i++) {
@@ -65,19 +67,19 @@ const NavBar: React.FC = () => {
                   href="/cart"
                   className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
                 >
-                  Carrito
+                  <Image src={cart} alt="cart" />
                 </Link>
                 <Link
                   href="/dashboard"
                   className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
                 >
-                  Perfil
+                  <Image src={userProfile} alt="cart" />
                 </Link>
                 <p
                   className="block cursor-pointer md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
                   onClick={() => logout()}
                 >
-                  Cerrar Sesión
+                  <Image src={goOut} alt="cart" />
                 </p>
               </>
             ) : (

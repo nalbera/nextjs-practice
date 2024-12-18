@@ -1,14 +1,45 @@
 "use client"
 
+import { useContext } from "react";
 import { CartItem } from "@/components/cart-item/CartItem";
 import { useCart } from "@/hooks/useCart";
-
+import { AuthContext } from "@/context/AuthContextProvider";
 
 const Cart: React.FC = () => {
     const { items, removeAll } = useCart();
+    const {token, user} = useContext(AuthContext);
 
     const prices = items.map((product) => product.price);
     const total = prices.reduce((total, price) => total + price, 0);
+
+    const productsId = items.map((product) => product.id);
+
+    const handleClick = async () => {
+        try {
+            
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'authorization': token
+                } as HeadersInit,
+                body: JSON.stringify({
+                    userId: user?.id,
+                    products: productsId
+                })
+            });
+
+            const json = await response.json();
+
+            console.log(json);
+            
+
+        } catch (error) {
+            console.log(error);
+        } finally {
+            console.log('ok');
+        }
+    }
 
     return (
         <div className="max-w-16xl px-4 py-16 sm:px-6 lg:px-8">
@@ -41,8 +72,7 @@ const Cart: React.FC = () => {
                             <div className="flex items-center justify-center w-full mt-3">
                                 <button
                                     className="flex items-center justify-center px-6 py-2 w-full ml-auto text-white bg-slate-950 border-0 rounded focus:outline-none hover:bg-slate-500"
-                                    onClick={() => console.log("Buy")
-                                    }
+                                    onClick={() => handleClick()}
                                 >
                                     Comprar
                                 </button>

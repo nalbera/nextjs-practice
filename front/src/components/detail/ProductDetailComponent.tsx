@@ -1,8 +1,21 @@
-import React from "react"
+"use client"
+
+import React from "react";
 import { DetailComponentProps } from "./types";
+import { useCart } from "@/hooks/useCart";
 
 
 export const ProductDetailComponent: React.FC<DetailComponentProps> = ({id, name, description, price, stock, image}) => {
+  
+  const { addItem } = useCart();
+
+  const data = {
+    id,
+    name,
+    price,
+    image
+  }
+
   return (
     <div>
       <section className="overflow-hidden text-gray-700 bg-white body-font">
@@ -28,7 +41,10 @@ export const ProductDetailComponent: React.FC<DetailComponentProps> = ({id, name
                 <span className="text-2xl font-medium text-gray-900 title-font">
                   {`$ ${price}`}
                 </span>
-                <button className="flex px-6 py-2 ml-auto text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
+                <button 
+                  className="flex px-6 py-2 ml-auto text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600"
+                  onClick={() => addItem(data)}
+                >
                   Comprar
                 </button>
               </div>

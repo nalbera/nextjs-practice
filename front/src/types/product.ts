@@ -6,3 +6,10 @@ export interface Product {
     stock?: number;
     image: string;
 }
+
+export interface ProductCart {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+}

@@ -10,6 +10,9 @@ import { AuthContext } from "@/context/AuthContextProvider";
 import cart from '../../../public/cart.svg';
 import userProfile from '../../../public/user-profile.svg';
 import goOut from '../../../public/go-out.svg';
+import bag from '../../../public/bag.svg';
+
+import { useCart } from "@/hooks/useCart";
 
 const NavBar: React.FC = () => {
  
@@ -21,7 +24,7 @@ const NavBar: React.FC = () => {
     }
     
     const { token, logout } = useContext(AuthContext);
-
+    const shoppingCart = useCart();
   return (
     <nav className="flex flex-wrap items-center justify-between p-3 bg-teal-200/20">
       <Image
@@ -67,7 +70,16 @@ const NavBar: React.FC = () => {
                   href="/cart"
                   className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
                 >
-                  <Image src={cart} alt="cart" />
+                  {
+                    shoppingCart.items.length == 0 ? (
+                      <Image src={cart} alt="cart" />
+                    ):(
+                      <div className="flex gap-0">
+                        <Image src={bag} alt="cart" />
+                        <span>{shoppingCart.items.length}</span>
+                      </div>
+                    )
+                  }
                 </Link>
                 <Link
                   href="/dashboard"

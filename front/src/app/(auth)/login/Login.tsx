@@ -26,6 +26,7 @@ const Login =  () => {
             const json = await signInService(email, password);
             
             const user: UserProfile = {
+                id: json.user.id,
                 userName: json.user.name,
                 email: json.user.email,
                 address: json.user.address,

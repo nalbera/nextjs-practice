@@ -29,12 +29,6 @@ const AuthContextProvider = ({children}: Props) => {
         localStorage.setItem("token", token);
     }
 
-    const updateDataUserLogged = (user: UserProfile) => {
-        localStorage.removeItem("user");
-        setUser(user);
-        localStorage.setItem("user", JSON.stringify(user));
-    }
-
     const logout = () => {
         setUser(null);
         setToken(null);
@@ -44,7 +38,7 @@ const AuthContextProvider = ({children}: Props) => {
     }
 
     return (
-        <AuthContext.Provider value={{token, user, setUserLogin, logout, updateDataUserLogged}}>
+        <AuthContext.Provider value={{token, user, setUserLogin, logout}}>
             { children }
         </AuthContext.Provider>
     )

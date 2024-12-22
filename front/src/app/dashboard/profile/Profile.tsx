@@ -8,7 +8,7 @@ import { updateUserLoggedService } from "@/services/updateUserLoggedService";
 
 const Profile = () => {
     
-    const {user, token, updateDataUserLogged} = useContext(AuthContext);
+    const {user, token, logout} = useContext(AuthContext);
     
 
     const [name, setName] = useState(user?.userName || "");
@@ -21,15 +21,7 @@ const Profile = () => {
         try {
             
             await updateUserLoggedService(name, address, email, phone, token);
-            
-            const user = {
-                userName: name,
-                email,
-                address,
-                phone
-            }
-
-            updateDataUserLogged(user);
+            logout();
             
         } catch (error) {
           toast.error(`${ error }`, {

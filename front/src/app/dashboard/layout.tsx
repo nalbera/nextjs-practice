@@ -3,7 +3,7 @@ import React from "react";
 
 const Layout = ({children}: {children: React.ReactNode}) => {
     return (
-        <div className="min-h-screen flex flex-row justify-between">
+        <div className="container min-h-screen flex flex-row justify-between">
             <Sidebar />    
             { children }
         </div>

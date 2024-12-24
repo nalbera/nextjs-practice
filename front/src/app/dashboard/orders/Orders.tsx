@@ -43,8 +43,6 @@ export const Orders: React.FC = () => {
         })
       }
       
-      console.log(currentOrders);
-      
       setOrders(currentOrders);
     }
 

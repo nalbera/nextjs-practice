@@ -1,54 +1,12 @@
 "use client"
 
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "@/context/AuthContextProvider";
-import { Product } from "@/types/product";
+import Loader from "@/components/loader/Loader";
+import useOrders from "@/hooks/useOrders";
 
-interface Order {
-  id: number;
-  status: string,
-  date: string;
-  products: Product[],
-  totalOrder: number
-}
 
 export const Orders: React.FC = () => {
   
-  const { token } = useContext(AuthContext);
-
-  const [orders, setOrders] = useState<Order[]>([]);
-
-
-  useEffect(() => {
-
-    const getOrders = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/orders`, {
-        headers: {
-          'authorization': token
-        } as HeadersInit
-      });
-
-      const json = await response.json();
-      
-      let currentOrders;
-      if(json.length) {
-        currentOrders = json.map((orders: Order) => {
-          return {
-            id: orders.id,
-            date: orders.date,
-            status: orders.status,
-            products: orders.products,
-            totalOrder: orders.products.reduce((curr, obj) => curr + obj.price, 0)
-          }
-        })
-      }
-      
-      setOrders(currentOrders);
-    }
-
-    getOrders();
-  }, [token]);
-
+  const { orders, loading } = useOrders();
   
   return orders ? (
     <div className="mt-14 mr-auto ml-14 container">
@@ -56,6 +14,7 @@ export const Orders: React.FC = () => {
         <h2 className="text-xl font-semibold">Compras realizadas</h2>  
       </div>
       {
+        loading ? <Loader /> :
         orders.map((order) => (
           <div key={order.id} className="mb-6 shadow-md overflow-hidden rounded-xl">
             <div className="flex bg-slate-200 p-4 font-sans">

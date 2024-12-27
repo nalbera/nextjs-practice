@@ -72,7 +72,7 @@ const NavBar: React.FC = () => {
                 >
                   {
                     shoppingCart.items.length == 0 ? (
-                      <Image src={cart} alt="cart" />
+                      <Image src={cart} alt="cart"/>
                     ):(
                       <div className="flex gap-0">
                         <Image src={bag} alt="cart" />

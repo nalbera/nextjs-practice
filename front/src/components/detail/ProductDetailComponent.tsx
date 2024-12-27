@@ -1,19 +1,34 @@
 "use client"
 
-import React from "react";
+import React, {useContext} from "react";
+import { useRouter } from "next/navigation";
 import { DetailComponentProps } from "./types";
 import { useCart } from "@/hooks/useCart";
-
+import { AuthContext } from "@/context/AuthContextProvider";
 
 export const ProductDetailComponent: React.FC<DetailComponentProps> = ({id, name, description, price, stock, image}) => {
   
   const { addItem } = useCart();
+  
+  const { token } = useContext(AuthContext);
 
   const data = {
     id,
     name,
     price,
     image
+  }
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    
+    if(!token) {
+      router.push('/login');
+      return
+    }
+
+    addItem(data);
   }
 
   return (
@@ -43,7 +58,7 @@ export const ProductDetailComponent: React.FC<DetailComponentProps> = ({id, name
                 </span>
                 <button 
                   className="flex px-6 py-2 ml-auto text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600"
-                  onClick={() => addItem(data)}
+                  onClick={handleClick}
                 >
                   Comprar
                 </button>

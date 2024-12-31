@@ -65,9 +65,6 @@ export default function Landing() {
                   <span className="text-gray-700 font-medium">
                     Desde $999.99
                   </span>
-                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
-                    Ver mas...
-                  </button>
                 </div>
               </div>
             </div>
@@ -93,9 +90,6 @@ export default function Landing() {
                   <span className="text-gray-700 font-medium">
                     Desde $888.88
                   </span>
-                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
-                    Ver mas...
-                  </button>
                 </div>
               </div>
             </div>
@@ -120,9 +114,6 @@ export default function Landing() {
                   <span className="text-gray-700 font-medium">
                     Desde $888.88
                   </span>
-                  <button className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">
-                    Ver mas...
-                  </button>
                 </div>
               </div>
             </div>

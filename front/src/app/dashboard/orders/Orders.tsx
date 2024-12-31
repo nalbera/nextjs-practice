@@ -55,7 +55,9 @@ export const Orders: React.FC = () => {
       }
     </div>
   ) : (
-    <h3>No hay ordenes de compras para mostrar</h3>
+    <div className="mt-14 mr-auto ml-14 container">
+      <h3 className="font-semibold">No hay ordenes de compras para mostrar</h3>
+    </div>
   )
 }
 

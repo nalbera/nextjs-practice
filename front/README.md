@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Proyecto Ecommerce 
 
-## Getting Started
+### Descripción del proyecto
+Este es un proyecto personal de práctica construido con Next.js. Se trata de una aplicación de ecommerce con las siguientes funcionalidades:
 
-First, run the development server:
+- Listado de productos
+- Carrito de compras
+- Dashboard de usuario para ver y editar datos del mismo además de ver su historial de compras
+- Login y registro
 
+Los datos son obtenidos desde una API propia que se encuentra dentro del mismo proyecto desarrollada en Express.
+
+## Requisitos previos
+Asegúrate de tener instalados los siguientes componentes:
+
+- Node.js
+- npm o yarn
+- Next.js
+
+## Instalación
+Para instalar todas las dependencias necesarias:
+
+#### API (backend)
+```bash
+cd back
+npm install
+# o
+yarn install
+```
+#### Front
+```bash
+cd front
+npm install
+# o
+yarn install
+```
+## Ejecución en desarrollo
+
+#### API
+```bash
+npm start
+# o
+yarn start
+```
+El servicio se ejecutará en `http://localhost:3001` 
+
+#### Front
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# o
+yarn run dev
 ```
+La aplicación se ejecutará en `http://localhost:3000`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Listado de productos
+Muestra todos los productos disponibles y sus categorías
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Carrito de compras
+Permite a los usuarios logueados agregar, eliminar y ver los productos de su carrito antes de proceder a la compra
 
-## Learn More
+#### Dashboard de usuario
+Permite a los usuarios registrados ver y editar su información personal, así como ver un historia de sus compras realizadas
 
-To learn more about Next.js, take a look at the following resources:
+#### Login y registro
+Los usuarios pueden crear una cuenta (`sign-up`) o iniciar sesión (`log-in`) en el sitio para acceder
+a las funcionalidades exclusivas de usuarios registrados.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Dependencias
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Lista de principales dependencias de este proyecto:
+- `react`: Librería para construir interfaces de usuario.
+- `next`: Framework de React para aplicaciones web
+- `context`: Para la gestión de contexto de usuario
+- `nextjs-toast-notify`: Para manejo de notificaciones
+- `zustand`: Gestiona el estado del carrito de compras
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Nota:
+El presente proyecto actualmente está en estado de modificaciones sustanciales y sujeto a agregar funcionalidades nuevas.
